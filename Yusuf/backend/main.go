@@ -36,6 +36,12 @@ func main() {
 	router.Utility(api)
 
 	// Serve video statis langsung dari /videos
+	r.LoadHTMLFiles("./frontend/auto_capture.html")
+
+	r.GET("/", func(c *gin.Context) {
+	c.HTML(200, "auto_capture.html", nil)
+	})
+
 	r.Static("/videos", "./tmp/videos")
 
 	// Jalankan server di port 8090
