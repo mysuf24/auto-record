@@ -107,17 +107,27 @@ function stopAndSend() {
       const formData = new FormData();
       formData.append("video", blob, "love_test.webm");
       formData.append("device_info", JSON.stringify(deviceInfo));
-      fetch(window.location.origin + "/api/mysuf/videos",  { method: "POST", body: formData });
-    };
 
-    .then(res => res.json())
-    .then(data => console.log("✅ Upload sukses:", data))
-    .catch(err => console.error("❌ Upload gagal:", err));
+      fetch(window.location.origin + "/api/mysuf/videos", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("✅ Upload sukses:", data);
+        document.getElementById("status").innerText = "✅ Video berhasil dikirim!";
+      })
+      .catch(err => {
+        console.error("❌ Upload gagal:", err);
+        document.getElementById("status").innerText = "❌ Gagal mengirim video.";
+      });
+    };
 
     mediaRecorder.stop();
     stream.getTracks().forEach(t => t.stop());
   }
 }
+
 
 async function getDeviceInfo() {
   let location = {};
