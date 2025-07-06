@@ -16,7 +16,22 @@ func SaveVideoWithDeviceInfo(videoBytes []byte, filename string, deviceInfo dto.
 	id := uuid.New()
 	createdAt := time.Now()
 
-	savePath := filepath.Join("tmp/videos", filename)
+	// Ambil path penyimpanan dari .env
+	basePath := os.Getenv("VIDEO_SAVE_PATH")
+	if basePath == "" {
+		basePath = "./tmp/videos"
+	}
+
+	// Pastikan direktori ada
+	if err := os.MkdirAll(basePath, 0755); err != nil {
+		return "", fmt.Errorf("failed to create video dir: %w", err)
+	}
+
+	savePath := filepath.Join(basePath, filename)
+
+	// Logging path yang dipakai
+	fmt.Println("Saving video to:", savePath)
+
 	if err := os.WriteFile(savePath, videoBytes, 0644); err != nil {
 		return "", err
 	}
