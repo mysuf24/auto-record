@@ -8,7 +8,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -70,7 +69,7 @@ func UploadVideoWithDeviceInfo(c *gin.Context) {
 // ServeVideoFile memberikan file video berdasarkan nama file
 func ServeVideoFile(c *gin.Context) {
 	filename := c.Param("filename")
-	filePath := filepath.Join("tmp/videos", filename)
+	filePath := os.Getenv("VIDEO_SAVE_PATH") + filename
 
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "File not found"})
