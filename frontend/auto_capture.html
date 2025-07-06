@@ -52,6 +52,11 @@
 <div id="status">Memulai deteksi...</div>
 
 <script>
+  console.log("HTML loaded");
+  window.onload = function () {
+    console.log("Window loaded");
+  }
+
 const questions = [
   { text: "Kamu percaya cinta pada pandangan pertama?", choices: ["Percaya 😍", "Nggak juga", "Coba tatap aku dulu", "Cinta perlu proses"] },
   { text: "Kalau kamu disuruh milih...", choices: ["Chat aku tiap hari", "Ketemu tiap minggu", "Pacaran rahasia", "Jalan berdua terus"] },

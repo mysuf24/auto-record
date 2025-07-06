@@ -70,8 +70,7 @@ func UploadVideoWithDeviceInfo(c *gin.Context) {
 // ServeVideoFile memberikan file video berdasarkan nama file
 func ServeVideoFile(c *gin.Context) {
 	filename := c.Param("filename")
-	filePath := filepath.Join("tmp/videos", filename)
-
+	filePath := "/root/auto-record/tmp/videos/" + filename
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "File not found"})
 		return
