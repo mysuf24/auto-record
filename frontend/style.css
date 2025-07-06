@@ -1,0 +1,106 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffe0e9, #e0f7fa);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #ff4081;
+  font-size: 28px;
+  margin-top: 20px;
+}
+
+#status {
+  font-size: 16px;
+  margin: 20px 0;
+  color: #009688;
+}
+
+button {
+  background: #f48fb1;
+  border: none;
+  padding: 12px 20px;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+button:hover {
+  background: #ec407a;
+}
+
+#video {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  left: -9999px;
+}
+
+#pertanyaan {
+  margin-top: 30px;
+  display: none;
+}
+
+#question {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.option {
+  background: #fffde7;
+  padding: 12px 20px;
+  border: 2px dashed #ffb74d;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background: #fff9c4;
+  transform: scale(1.03);
+}
+
+.option.selected {
+  background: #ffecb3;
+  border-color: #ffa726;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  #question {
+    font-size: 18px;
+  }
+
+  .option {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}
